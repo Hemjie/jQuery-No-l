@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste de Fiorella</title>
+    <link rel="stylesheet" href="liste-noel.css">
+</head>
+<body>
+    <!-- Nous allons créer une liste de Noël pour Fiorella.
+        On aura d'abord une liste de cadeaux(en HTML).
+        - Sophie la girafe 
+        - Trotteur
+        - Livre
+        - Petit ours brun 
+        - Doudou
+        - Léon l'ourson
+        - Piano
+        - Cubes et Sphères
+
+        1. Fiorella doit pouvoir choisir (click) uniquement 5 cadeaux (pas 10). (Tableau ?)
+        2. Quand Fiorella aura choisi un cadeau, cet élément de la liste sera barré. (Une classe CSS ?)
+        3. Fiorella peut changer d'avis et "déselectionner" un cadeau. (Tableau pop ou slice ?)
+        4. Dès qu'elle aura choisi 5 cadeaux, on affichera un message "Attends ton anniversaire".
+
+        BONUS. Afficher la liste de Fiorella au fur et à mesure dans une 2ème liste (Aide du formateur)
+        BONUS. Afficher une phrase "Fiorella a choisi 2 cadeaux. Il en reste 3."
+
+        Vous êtes libres d'ajouter des variantes au TP...
+
+        Durée: Entre 1 et 2 heures -->
+        <div class="page">
+            <div class="container">
+                <h1>La liste de Noël de Fiorella</h1>
+                <div class="flex">
+                    <div class="gifts">
+                        <h2>Cadeaux au choix</h2>
+                        <ul class="list">
+                            <li>Sophie la girafe</li>
+                            <li>Trotteur</li>
+                            <li>Livres</li>
+                            <li>Petit ours brun</li>
+                            <li>Doudou</li>
+                            <li>Léon l'ourson</li>
+                            <li>Piano</li>
+                            <li>Cubes et sphères</li>
+                            <li>Poupée</li>
+                            <li>Mulan</li>
+                        </ul>
+                    </div>
+                        <div class="basket">
+                        <h2>Cadeaux choisis</h2>
+                        <ul class="choices">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script src="jquery.js"></script>
+
+    <script>
+        var gifts = [];
+        var i = 0;
+        
+        $("li").click(function(){
+            console.log("i :" + i);
+            if (i == 0) {
+                gifts.push($(this).text());
+                console.log(gifts);
+                $(this).css("text-decoration", "line-through");
+                var list = $('<li></li>');
+                $('.choices').append(list);
+                console.log($(this).text());
+                $('.choices > li').text($(this).text());
+                i++;
+                alert("Fiorella a choisi 1 cadeau, il en reste 4 à choisir");
+            } else if (i < 5) {
+                for (var j = 0; j < gifts.length; j++) {
+                    console.log($(this).text());
+                    if ($(this).text() == gifts[j]) {
+                        gifts.splice(j, 1);
+                        $(this).css("text-decoration", "none");
+                        console.log(gifts);
+                        $(".choices li:contains(" + $(this).text() + ")").remove();
+                        i--;
+                    } else if (j == (gifts.length - 1)) {
+                        gifts.push($(this).text());
+                        console.log(gifts);
+                        $(this).css("text-decoration", "line-through");
+                        var list = $('<li></li>');
+                        $('.choices').append(list);
+                        console.log($(this).text());
+                        $('.choices li:last-child').text($(this).text());
+                        alert("Fiorella a choisi " + (i+1) + " cadeau(x), il en reste " + (5-(i+1)) + " à choisir");
+                        i++;
+                        break;
+                    }
+                }
+            } else {
+                for (var j = 0; j < gifts.length; j++) {
+                    console.log($(this).text());
+                    if ($(this).text() == gifts[j]) {
+                        gifts.splice(j, 1);
+                        $(this).css("text-decoration", "none");
+                        console.log(gifts);
+                        $(".choices li:contains(" + $(this).text() + ")").remove();
+                        i--;
+                        return;
+                    } else {
+                        alert("Attend ton anniversaire si tu veux plus de cadeaux");
+                        break;
+                    }
+                }
+            }
+        });
+
+
+    </script>
+    
+</body>
+</html>
