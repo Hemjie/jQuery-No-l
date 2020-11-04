@@ -33,6 +33,7 @@
             <div class="container">
                 <h1>La liste de Noël de Fiorella</h1>
                 <div id="max" style="display :none">Attends ton anniversaire si tu veux d'autres cadeaux</div>
+                <div id="counter"></div>
                 <div class="flex">
                     <div class="gifts">
                         <h2>Cadeaux au choix</h2>
@@ -74,13 +75,20 @@
                 $('.choices').append(list);
                 $('.choices > li').text($(this).text()); //ajout du cadeau dans la 2eme liste
                 i++;
-                alert("Fiorella a choisi 1 cadeau, il en reste 4 à choisir");
+                var p = $("<p></p>");
+                p.text("Fiorella a choisi 1 cadeau, il en reste 4 à choisir");
+                $("#counter").empty();
+                $("#counter").append(p); //message d'alerte du nombre de cadeau
             } else if (i < 5) {
                 for (var j = 0; j < gifts.length; j++) {
                     if ($(this).text() == gifts[j]) {
                         gifts.splice(j, 1);  //enlève cadeau du tableau
                         $(this).css("text-decoration", "none"); //enlève le barré
                         $(".choices li:contains(" + $(this).text() + ")").remove(); /* suppression du cadeau dans la 2ème liste */
+                        var p = $("<p></p>");
+                        p.text("Fiorella a choisi " +(i-1)+" cadeau(x), il en reste " + (6-i)+ " à choisir");
+                        $("#counter").empty();
+                        $("#counter").append(p);
                         i--;
                         break;
                     } else if (j == (gifts.length - 1)) {
@@ -89,7 +97,10 @@
                         var list = $('<li></li>');
                         $('.choices').append(list);
                         $('.choices li:last-child').text($(this).text());
-                        alert("Fiorella a choisi " + (i+1) + " cadeau(x), il en reste " + (5-(i+1)) + " à choisir");
+                        var p = $("<p></p>");
+                        p.text("Fiorella a choisi " +(i+1)+" cadeau(x), il en reste " + (4-i)+ " à choisir");
+                        $("#counter").empty();
+                        $("#counter").append(p);
                         i++;
                         break;
                     }
@@ -100,6 +111,10 @@
                         gifts.splice(j, 1);
                         $(this).css("text-decoration", "none");
                         $(".choices li:contains(" + $(this).text() + ")").remove();
+                        var p = $("<p></p>");
+                        p.text("Fiorella a choisi " + (i-1) +" cadeau(x), il en reste " + (6-i)+ " à choisir");
+                        $("#counter").empty();
+                        $("#counter").append(p);
                         i--;
                         return;
                     } 
