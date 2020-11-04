@@ -82,6 +82,7 @@
                         $(this).css("text-decoration", "none"); //enlève le barré
                         $(".choices li:contains(" + $(this).text() + ")").remove(); /* suppression du cadeau dans la 2ème liste */
                         i--;
+                        break;
                     } else if (j == (gifts.length - 1)) {
                         gifts.push($(this).text());
                         $(this).css("text-decoration", "line-through");
