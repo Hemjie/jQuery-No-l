@@ -65,35 +65,28 @@
         var gifts = [];
         var i = 0;
         
-        $("li").click(function(){
-            console.log("i :" + i);
+        $("li").click(function(){            
             $("#max").hide();
             if (i == 0) {
                 gifts.push($(this).text());
-                console.log(gifts);
                 $(this).css("text-decoration", "line-through");
                 var list = $('<li></li>');
                 $('.choices').append(list);
-                console.log($(this).text());
                 $('.choices > li').text($(this).text());
                 i++;
                 alert("Fiorella a choisi 1 cadeau, il en reste 4 à choisir");
             } else if (i < 5) {
                 for (var j = 0; j < gifts.length; j++) {
-                    console.log($(this).text());
                     if ($(this).text() == gifts[j]) {
                         gifts.splice(j, 1);
                         $(this).css("text-decoration", "none");
-                        console.log(gifts);
                         $(".choices li:contains(" + $(this).text() + ")").remove();
                         i--;
                     } else if (j == (gifts.length - 1)) {
                         gifts.push($(this).text());
-                        console.log(gifts);
                         $(this).css("text-decoration", "line-through");
                         var list = $('<li></li>');
                         $('.choices').append(list);
-                        console.log($(this).text());
                         $('.choices li:last-child').text($(this).text());
                         alert("Fiorella a choisi " + (i+1) + " cadeau(x), il en reste " + (5-(i+1)) + " à choisir");
                         i++;
@@ -102,17 +95,15 @@
                 }
             } else {
                 for (var j = 0; j < gifts.length; j++) {
-                    console.log($(this).text());
                     if ($(this).text() == gifts[j]) {
                         gifts.splice(j, 1);
                         $(this).css("text-decoration", "none");
-                        console.log(gifts);
                         $(".choices li:contains(" + $(this).text() + ")").remove();
                         i--;
                         return;
                     } 
                 }   alert("Attend ton anniversaire si tu veux plus de cadeaux");
-                    $("#max").show()
+                    $("#max").show();
             }
         });
     </script>
