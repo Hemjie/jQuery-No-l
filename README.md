@@ -4,7 +4,7 @@ Création d'une liste de Noël avec jQuery: pas plus de 5 cadeaux, messages d'al
 
 
 <--! Nous allons créer une liste de Noël pour Fiorella.
-        On aura d'abord une liste de cadeaux(en HTML).
+        On aura d'abord une liste de cadeaux(en HTML) : 
         - Sophie la girafe 
         - Trotteur
         - Livre
