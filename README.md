@@ -1,7 +1,9 @@
 # jQuery-Noel
-[liste](/maquette-liste.png)
+![liste](/maquette-liste.png)
 Création d'une liste de Noël avec jQuery: pas plus de 5 cadeaux, messages d'alerte, changement d'avis, affichage d'une 2ème liste dynamique.
-Nous allons créer une liste de Noël pour Fiorella.
+
+
+<--! Nous allons créer une liste de Noël pour Fiorella.
         On aura d'abord une liste de cadeaux(en HTML).
         - Sophie la girafe 
         - Trotteur
@@ -22,4 +24,4 @@ Nous allons créer une liste de Noël pour Fiorella.
 
         Vous êtes libres d'ajouter des variantes au TP...
 
-        Durée: Entre 1 et 2 heures
+        Durée: Entre 1 et 2 heures -->
